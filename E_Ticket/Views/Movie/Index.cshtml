@@ -19,7 +19,12 @@
                             <p class="card-text">
                                 <h5 class="card-title">
                                     @item.Name
+                                    <div class="Controll-buttons" style="float:right;">
+                                        <a class="btn btn-success text-white " asp-route-id="@item.Id" asp-action="Edit"><i class="bi bi-pencil"></i></a>
+                                        <a class="btn btn-danger text-white " asp-route-id="@item.Id" asp-action="Delete"><i class="bi bi-trash"></i> </a>
+                                    </div>
                                 </h5>
+                               
                             </p>
                         </div>
                     </div>
@@ -58,6 +63,8 @@
                                 <a class="btn btn-success text-white @((DateTime.Now > item.EndDate) ? "disabled" : "")">
                                     <i class="bi bi-cart-plus"></i> Add to Cart (Price @item.Price.ToString("c"))
                                 </a>
+
+                                <a class="btn btn-outline-info" style="float:right;" asp-route-id="@item.Id" asp-action="Details">Show Details</a>
                             </p>
                         </div>
                     </div>
@@ -65,4 +72,10 @@
             </div>
         </div>
     }
+</div>
+<div>
+    <a asp-controller="Movie" asp-action="Create" style="position:fixed; right:25px; bottom:25px;" class="btn btn-success">
+        <i class="badge-info bi-plus-circle"> </i> Add New Actor
+    </a>
+
 </div>

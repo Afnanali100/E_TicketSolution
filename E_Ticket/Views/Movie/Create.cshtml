@@ -1,0 +1,47 @@
+﻿@model MovieViewModel
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<<div class="row text">
+    <div class="col-md-8 offset-2">
+        <p>
+            <h1>Add a New Cinema</h1>
+        </p>
+        <div class="row">
+            <div class="col-md-8 offset-2">
+                <form asp-action="Create">
+       
+                    <partial name="PartialViews/_CreateAndUpdatePartialView"/>
+
+                    <div class="form-group">
+                        <input type="submit" value="Create" class="btn btn-outline-success float-right" />
+                        <a class="btn btn-outline-secondary" asp-action="Index">Show All</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+@section script{
+    <script>
+
+
+        $(document).ready(function () {
+            var output = document.getElementById('ImageUrlPerview');
+            output.src = $("#ImageURL").val();
+        })
+
+
+        $("#ImageURL").on("change", function () {
+            var output = document.getElementById('ImageUrlPerview');
+            output.src=$(this).val();
+        })
+
+      
+
+    </script>
+
+    <partial name="_ValidationScriptsPartial"/>
+}

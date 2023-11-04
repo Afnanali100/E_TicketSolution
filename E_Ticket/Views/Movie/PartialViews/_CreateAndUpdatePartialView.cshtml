@@ -1,0 +1,99 @@
+﻿@model MovieViewModel
+@inject IUnitOfWork unitOFWork
+@{
+    List<SelectListItem> category = Enum.GetValues(typeof(MovieCategory))
+            .Cast<MovieCategory>()
+            .Select(c => new SelectListItem
+            {
+                Text = c.ToString(),
+                Value = ((int)c).ToString()
+            }).ToList();
+
+    var producers = new SelectList(await unitOFWork.ProducergenericRepository.GetAllAsync(), "Id", "FullName");
+    var cinemas = new SelectList(await unitOFWork.CinemagenericRepository.GetAllAsync(),"Id","Name");
+    var actors = new SelectList(await unitOFWork.ActorgenericRepository.GetAllAsync(), "Id", "FullName");
+}
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+<div asp-validation-summary="All" class="text-danger"></div>
+<div class="form-group text-center">
+    <img id="ImageUrlPerview" class="border-info " style="max-width: 150px" src="" />
+</div>
+
+<div class="form-group">
+    <label asp-for="ImageURL" class="control-label"></label>
+    <input asp-for="ImageURL" class="form-control" />
+    <span asp-validation-for="ImageURL" class="text-danger"></span>
+</div>
+<div class="form-group">
+    <label asp-for="Description" class="control-label"></label>
+    <input asp-for="Description" class="form-control" />
+    <span asp-validation-for="Description" class="text-danger"></span>
+</div>
+<div class="form-group">
+    <label asp-for="Name" class="control-label"></label>
+    <input asp-for="Name" class="form-control" />
+    <span asp-validation-for="Name" class="text-danger"></span>
+</div>
+
+<div class="form-group">
+    <label asp-for="StartDate" class="control-label"></label>
+    <input asp-for="StartDate" class="form-control" />
+    <span asp-validation-for="StartDate" class="text-danger"></span>
+</div>
+
+<div class="form-group">
+    <label asp-for="EndDate" class="control-label"></label>
+    <input asp-for="EndDate" class="form-control" />
+    <span asp-validation-for="EndDate" class="text-danger"></span>
+</div>
+
+<div class="form-group">
+    <label asp-for="Price" class="control-label"></label>
+    <input asp-for="Price" class="form-control" />
+    <span asp-validation-for="Price" class="text-danger"></span>
+</div>
+
+<div class="form-group">
+    <label asp-for="Moviecategory" class="control-label"></label>
+    <select asp-items="@category" asp-for="Moviecategory" class="form-control">
+        <option value="@null" class="form-control">
+            -------Select Category----------
+        </option>
+    </select>
+    <span asp-validation-for="Moviecategory" class="text-danger"></span>
+</div>
+
+
+<div class="form-group">
+    <label asp-for="@Model.CinemaId" class="control-label"></label>
+    <select asp-items="@cinemas" asp-for="@Model.CinemaId" class="form-control">
+        <option value="@null" class="form-control">
+            -------Select Cinema----------
+        </option>
+    </select>
+    <span asp-validation-for="@Model.CinemaId" class="text-danger"></span>
+</div>
+
+
+<div class="form-group">
+    <label asp-for="@Model.Movie_Actor" class="control-label"></label>
+    <select asp-items="@actors" asp-for="@Model.Movie_Actor" class="form-control" multiple>
+    </select>
+    <span asp-validation-for="@Model.Movie_Actor" class="text-danger"></span>
+</div>
+
+
+<div class="form-group">
+    <label asp-for="@Model.ProducerId" class="control-label"></label>
+    <select class="form-control" asp-items="@producers" asp-for="@Model.ProducerId">
+        <option value="@null" class="form-control">
+            -------Select Producer----------
+        </option>
+    </select>
+    <span asp-validation-for="@Model.ProducerId" class="text-danger"></span>
+</div>
+
+
+
