@@ -1,0 +1,31 @@
+[
+  {
+    "Name": "Life",
+    "Description": "This is the Life movie ",
+    "Price": 39.50,
+    "ImageURL": "http://dotnethow.net/images/movies/movie-3.jpeg",
+    "CinemaId": 3,
+    "ProducerId": 3
+
+  },
+
+  {
+    "Name": "The Shawshank Redemption",
+    "Description": "This is the Shawshank Redemption Description",
+    "Price": 29.50,
+    "ImageURL": "http://dotnethow.net/images/movies/movie-1.jpeg",
+    "CinemaId": 4,
+    "ProducerId": 1
+
+  },
+
+  {
+    "Name": "Cold Soles",
+    "Description": "This is the Cold Soles movie ",
+    "Price": 39.50,
+    "ImageURL": "http://dotnethow.net/images/movies/movie-8.jpeg",
+    "CinemaId": 5,
+    "ProducerId": 5
+  }
+
+]
